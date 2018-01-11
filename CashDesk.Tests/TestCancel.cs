@@ -20,13 +20,13 @@ namespace CashDesk.Tests
         {
             using (var dal = new DataAccess())
             {
-                await dal.InitializeDatabaseAsync();
-                var memberNumber = await dal.AddMemberAsync("Foo", "CancelMember", DateTime.Today.AddYears(-18));
-                await dal.JoinMemberAsync(memberNumber);
+                dal.InitializeDatabaseAsync();
+                var memberNumber = dal.AddMemberAsync("Foo", "CancelMember", DateTime.Today.AddYears(-18));
+                dal.JoinMemberAsync(memberNumber);
                 await dal.CancelMembershipAsync(memberNumber);
 
                 // Make sure that member can join again
-                await dal.JoinMemberAsync(memberNumber);
+                dal.JoinMemberAsync(memberNumber);
             }
         }
 
@@ -35,8 +35,8 @@ namespace CashDesk.Tests
         {
             using (var dal = new DataAccess())
             {
-                await dal.InitializeDatabaseAsync();
-                var memberNumber = await dal.AddMemberAsync("Foo", "NoMemberCancel", DateTime.Today.AddYears(-18));
+                dal.InitializeDatabaseAsync();
+                var memberNumber = dal.AddMemberAsync("Foo", "NoMemberCancel", DateTime.Today.AddYears(-18));
                 await Assert.ThrowsAsync<NoMemberException>(async () => await dal.CancelMembershipAsync(memberNumber));
             }
         }
