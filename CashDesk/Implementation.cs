@@ -7,13 +7,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CashDesk
 {
-    /// <inheritdoc />
     public class DataAccess : IDataAccess
     {
 
         private DataContext db;
 
-        /// <inheritdoc />
         public void InitializeDatabaseAsync()
         {
             if (db == null)
@@ -26,7 +24,6 @@ namespace CashDesk
             }
         }
 
-        /// <inheritdoc />
         public int AddMemberAsync(string firstName, string lastName, DateTime birthday)
         {
             checkInit();
@@ -52,7 +49,6 @@ namespace CashDesk
             }
         }
 
-        /// <inheritdoc />
         public void DeleteMemberAsync(int memberNumber)
         {
             checkInit();
@@ -68,7 +64,6 @@ namespace CashDesk
 
         }
 
-        /// <inheritdoc />
         public IMembership JoinMemberAsync(int memberNumber)
         {
             checkInit();
@@ -94,7 +89,6 @@ namespace CashDesk
             }
         }
 
-        /// <inheritdoc />
         public async Task<IMembership> CancelMembershipAsync(int memberNumber)
         {
             checkInit();
@@ -120,7 +114,6 @@ namespace CashDesk
             }
         }
 
-        /// <inheritdoc />
         public async Task DepositAsync(int memberNumber, decimal amount)
         {
             checkInit();
@@ -142,7 +135,6 @@ namespace CashDesk
 
         }
 
-        /// <inheritdoc />
         public async Task<IEnumerable<IDepositStatistics>> GetDepositStatisticsAsync()
         {
             checkInit();
@@ -151,7 +143,6 @@ namespace CashDesk
             return deposit;
         }
 
-        /// <inheritdoc />
         public void Dispose()
         {
 

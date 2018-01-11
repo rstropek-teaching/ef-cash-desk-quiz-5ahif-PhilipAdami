@@ -8,14 +8,6 @@ namespace CashDesk.Model
 {
     public class Member : IMember
     {
-
-        //public Member(string firstName, string lastName, DateTime birthday)
-        //{
-        //    FirstName = firstName;
-        //    LastName = lastName;
-        //    Birthday = birthday;
-        //}
-
         [Key]
         public int MemberNumber { get; set; }
 
